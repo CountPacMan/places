@@ -15,10 +15,10 @@
     });
 
     $app->post("/results", function() use($app) {
-        $place = new Place($_POST['placeName']);
+        $place = new Place($_POST['placeName'], $_POST['picture'], $_POST['howLong']);
         $place->save();
 
-        return $app['twig']->render('results.php', array('place' => $place));
+        return $app['twig']->render('results.php', array('places' => Place::getAll()));
     });
 
     $app->post("/delete", function() use($app) {
