@@ -15,5 +15,15 @@ class Place {
         $this->place_name = $place_name;
     }
 
-    
+    function save() {
+        array_push($_SESSION['place_list'], $this);
+    }
+
+    static function deleteAll() {
+        $_SESSION['place_list'] = [];
+    }
+
+    static function getAll() {
+        return $_SESSION['place_list'];
+    }
 }
